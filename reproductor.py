@@ -174,12 +174,12 @@ class ReproductorMusica:
         
     def actualizar_progreso(self):
         while self.reproduciendo and pygame.mixer.music.get_busy():
-            self.tiempo_actual = min(self.tiempo_actual + 0.1, self.duracion_total)
+            self.tiempo_actual = min(self.tiempo_actual + 0.05, self.duracion_total)
             self.barra_progreso["value"] = self.tiempo_actual
             tiempo_actual_str = self.formatear_tiempo(self.tiempo_actual)
             tiempo_total_str = self.formatear_tiempo(self.duracion_total)
             self.tiempo_label.config(text=f"{tiempo_actual_str} / {tiempo_total_str}")
-            time.sleep(0.1)
+            time.sleep(0.05)
         if not pygame.mixer.music.get_busy() and self.reproduciendo:
             self.siguiente()
             
